@@ -8,6 +8,7 @@ C - Convert Celsius to Fahrenheit
 F - Convert Fahrenheit to Celsius
 Q - Quit"""
 
+
 def main():
     """Convert temperature between celsius and fahrenheit"""
     print(MENU)
@@ -27,9 +28,11 @@ def main():
         choice = input(">>> ").upper()
     print("Thank you.")
 
+
 def get_temperature(unit):
     number = float(input(f"Enter temperature in {unit}: "))
     return number
+
 
 def convert_fahr_to_celsius(fahrenheit):
     """Convert temperature from fahrenheit to celsius"""
@@ -41,5 +44,6 @@ def convert_celsius_to_fahr(celsius):
     """Convert temperature from celsius to fahrenheit"""
     fahrenheit = celsius * 9.0 / 5 + 32
     return fahrenheit
+
 
 main()

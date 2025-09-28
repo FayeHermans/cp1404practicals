@@ -1,5 +1,6 @@
 """Password stars"""
 
+
 def main():
     """Print a user password using stars"""
     minimum_length = 5
