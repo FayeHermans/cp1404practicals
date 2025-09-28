@@ -6,6 +6,7 @@ import random
 
 
 def main():
+    """Get user score and determine status"""
     score = float(input("Enter score: "))
     status = determine_status(score)
     print(f"Your score is {status}.")
