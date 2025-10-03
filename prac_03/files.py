@@ -14,3 +14,8 @@ name = in_file.read().strip()
 in_file.close()
 print(f"Hi {name}!")
 
+# 3
+with open("numbers.txt", "r") as in_file:
+    number01 = int(in_file.readline())
+    number02 = int(in_file.readline())
+print(number01 + number02)
