@@ -5,7 +5,7 @@ CP1404: Practical 03
 # 1
 out_file = open("name.txt", "w")
 name = input("Name: ")
-print(name, file=out_file) # I googled why this warning is here and can't figure out how to get rid of it, help please
+print(name, file=out_file)  # I googled why this warning is here and can't figure out how to get rid of it, help please
 out_file.close()
 
 # 2
@@ -19,3 +19,11 @@ with open("numbers.txt", "r") as in_file:
     number01 = int(in_file.readline())
     number02 = int(in_file.readline())
 print(number01 + number02)
+
+# 4
+total = 0
+with open("numbers.txt", "r") as in_file:
+    for line in in_file:
+        number = int(line)
+        total += number
+print(total)
