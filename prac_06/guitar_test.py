@@ -2,7 +2,7 @@
 Prac 06: Guitar
 Expected time: 15min
 Start time: 7:08pm
-Finish time:
+Finish time: 7:40pm (including guitars.py)
 """
 from prac_06.guitar import Guitar
 
