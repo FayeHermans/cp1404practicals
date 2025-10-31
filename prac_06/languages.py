@@ -2,7 +2,7 @@
 Prac 06: Languages
 Est time: 15min
 Start time: 6:50pm
-Finnish time:
+Finnish time: 7:03pm
 """
 
 from prac_06.programming_language import ProgrammingLanguage
