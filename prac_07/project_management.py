@@ -3,8 +3,8 @@ Prac 07 - Project Management
 Est time: 55 min
 Start time: 2:17PM
 Break: 3:12PM - 3:44PM
-Finish time:
-Actual time:
+Finish time: 5:12PM
+Actual time: 2h 55min
 """
 from operator import itemgetter
 
