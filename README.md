@@ -19,4 +19,5 @@ Practical work for IT@JCU CP1404
 ## Usefull Programming guides:
 
 [Programming Patterns](https://github.com/CP1404/Starter/wiki/Programming-Patterns)
+
 [Practicals](https://github.com/CP1404/Practicals/tree/master)
