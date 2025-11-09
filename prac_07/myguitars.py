@@ -16,13 +16,23 @@ def main():
         guitar = Guitar(parts[0], int(parts[1]), float(parts[2]))
         myguitars.append(guitar)
     in_file.close()
+    add_guitar(myguitars)
 
     myguitars.sort()
 
     for myguitar in myguitars:
         print(myguitar)
 
-
+def add_guitar(myguitars):
+    name = input("Name: ")
+    while name != "":
+        year = int(input("Year: "))
+        cost = float(input("Cost: $"))
+        guitar_add = Guitar(name, year, cost)
+        myguitars.append(guitar_add)
+        print(f"{guitar_add} added")
+        name = input("Name: ")
+    return myguitars
 
 
 
