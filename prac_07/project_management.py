@@ -65,9 +65,10 @@ def main():
                     print(project.start_date)
             #TODO fix typeError ????????
 
-            print(item for project in to_do_projects)
 
         elif choice == "A":
+            print("Let's add a new project")
+            projects = add_project(projects)
             pass
         elif choice == "U":
             pass
@@ -95,7 +96,15 @@ def save_file(filename, projects):
     for project in projects:
         print(f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.cpmpletion_percentage}")
 
-
+def add_project(projects):
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yy): ")
+    priority = input("Priority: ")
+    cost_estimation = input("Cost estimate: $")
+    completion_percentage = input("completion_percentage: ")
+    project = Project(name, start_date, priority, cost_estimation,completion_percentage)
+    projects.append(project)
+    return projects
 
 
 
