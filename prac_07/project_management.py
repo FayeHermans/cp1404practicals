@@ -61,8 +61,6 @@ def main():
             to_do_projects.sort(key=lambda p: p.start_date)
             for project in to_do_projects:
                 print(project)
-            # TODO fix typeError ????????
-
 
         elif choice == "A":
             print("Let's add a new project")
