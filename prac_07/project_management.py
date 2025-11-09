@@ -12,13 +12,13 @@ from project import Project
 import datetime
 
 MENU = ("- (L)oad projects\n"
-"- (S)ave projects\n"
-"- (D)isplay projects\n"
-"- (F)ilter projects by date\n"
-"- (A)dd new project\n"
-"- (U)pdate project\n"
-"- (Q)uit\n"
-">>> ")
+        "- (S)ave projects\n"
+        "- (D)isplay projects\n"
+        "- (F)ilter projects by date\n"
+        "- (A)dd new project\n"
+        "- (U)pdate project\n"
+        "- (Q)uit\n"
+        ">>> ")
 
 
 def main():
@@ -57,26 +57,34 @@ def main():
         elif choice == "F":
             date_string = input("Show projects that start after date (dd/mm/yy): ")
             date_from = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
-            to_do_projects = []
-            for project in sorted(projects, key=itemgetter(1)):
-                project_date = datetime.datetime.strptime(project.start_date, "%d/%m/%Y")
-                if project_date >= date_from:
-                    to_do_projects.append(project)
-                    print(project.start_date)
-            #TODO fix typeError ????????
+            to_do_projects = [p for p in projects if p.start_date >= date_from]
+            to_do_projects.sort(key=lambda p: p.start_date)
+            for project in to_do_projects:
+                print(project)
+            # TODO fix typeError ????????
 
 
         elif choice == "A":
             print("Let's add a new project")
             projects = add_project(projects)
-            pass
         elif choice == "U":
-            pass
+            for i, project in enumerate(projects):
+                print(f"{i} {project}")
+            project_choice = int(input("Project choice: "))
+            print(projects[project_choice])
+            new_percentage = input("New Percentage: ")
+            new_priority = input("New Priority: ")
+            if new_priority != "":
+                projects[project_choice].priority = int(new_priority)
+            if new_percentage != "":
+                projects[project_choice].completion_percentage = int(new_percentage)
         else:
             print("Invalid choice.")
         choice = input(MENU).upper()
+    save_choice = input(f"Would you like to save to {filename}")
+    if save_choice == "yes":
+        save_file(filename, projects)
     print("Thank you for using custom-built project management software.")
-
 
 
 def load_file(filename, projects):
@@ -91,10 +99,14 @@ def load_file(filename, projects):
     in_file.close()
     return projects
 
+
 def save_file(filename, projects):
     out_file = open(filename, 'w')
     for project in projects:
-        print(f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.cpmpletion_percentage}")
+        print(
+            f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}")
+    out_file.close()
+
 
 def add_project(projects):
     name = input("Name: ")
@@ -102,10 +114,9 @@ def add_project(projects):
     priority = input("Priority: ")
     cost_estimation = input("Cost estimate: $")
     completion_percentage = input("completion_percentage: ")
-    project = Project(name, start_date, priority, cost_estimation,completion_percentage)
+    project = Project(name, start_date, priority, cost_estimation, completion_percentage)
     projects.append(project)
     return projects
-
 
 
 main()
