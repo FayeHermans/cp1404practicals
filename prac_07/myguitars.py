@@ -17,8 +17,12 @@ def main():
         myguitars.append(guitar)
     in_file.close()
 
+    myguitars.sort()
+
     for myguitar in myguitars:
         print(myguitar)
+
+
 
 
 
