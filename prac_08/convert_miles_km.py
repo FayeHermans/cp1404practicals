@@ -24,7 +24,7 @@ class MilesConverterApp(App):
 
     def handle_increment(self, change):
         """Pressing buttons will add or subtract '1' from input """
-        new_value = float(self.root.ids.input_miles.text) + change
+        new_value = float(self.valid_number()) + change
         self.root.ids.input_miles.text = str(new_value)
 
     def valid_number(self):
@@ -32,7 +32,7 @@ class MilesConverterApp(App):
         try:
             value = float(self.root.ids.input_miles.text)
             return value
-        except TypeError:
+        except ValueError:
             return 0.0
 
 MilesConverterApp().run()
