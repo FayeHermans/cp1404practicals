@@ -18,10 +18,12 @@ class MilesConverterApp(App):
 
     def handle_calculate(self):
         """Convert the user input from miles to km """
-        km_value = int(self.root.ids.input_miles.text) * MILES_TO_KM
+        km_value = float(self.root.ids.input_miles.text) * MILES_TO_KM
         self.root.ids.output_label.text = str(km_value)
 
-
-
+    def handle_increment(self, change):
+        """Pressing buttons will add or subtract '1' from input """
+        new_value = float(self.root.ids.input_miles.text) + change
+        self.root.ids.input_miles.text = str(new_value)
 
 MilesConverterApp().run()
