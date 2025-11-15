@@ -1,6 +1,6 @@
 """
 CP1404 Prac 8
-App to craate labels for names
+App to create labels for names
 """
 from kivy.app import App
 from kivy.lang import Builder
