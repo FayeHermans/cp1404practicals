@@ -16,6 +16,11 @@ class MilesConverterApp(App):
         self.root = Builder.load_file('convert_miles_km.kv')
         return self.root
 
+    def handle_calculate(self):
+        """Convert the user input from miles to km """
+        km_value = int(self.root.ids.input_miles.text) * MILES_TO_KM
+        self.root.ids.output_label.text = str(km_value)
+
 
 
 
