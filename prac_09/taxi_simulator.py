@@ -14,8 +14,7 @@ def main():
     while choice != 'q':
         if choice == 'c':
             print("Taxis available:")
-            for i in range(0, len(taxis)):
-                print(f"{i} - {taxis[i]}")
+            display_taxis(taxis)
             taxi_choice = int(input("Choose taxi: "))
             if taxi_choice >= len(taxis):
                 print("Invalid taxi choice")
@@ -23,21 +22,33 @@ def main():
                 current_taxi = taxis[taxi_choice]
 
         if choice == 'd':
-            distance = int(input("Drive how far? "))
-            Taxi.start_fare(current_taxi)
-            Taxi.drive(current_taxi, distance)
-            if current_taxi == taxis[0]:
-                trip_fare = Taxi.get_fare(current_taxi)
+            if current_taxi is None:
+                print("You need to choose a taxi before you can drive")
             else:
-                trip_fare = SilverServiceTaxi.get_fare(current_taxi)
-            print(f"Your {current_taxi.name} trip cost you ${trip_fare:.2f}")
-            bill += trip_fare
+                trip_fare = drive_taxi(current_taxi, taxis)
+                bill += trip_fare
         print(f"Bill to date: ${bill:.2f}")
         choice = input(MENU).lower()
     print(f"Total trip cost: ${bill:.2f}")
     print("Taxis are now:")
+    display_taxis(taxis)
 
 
+def drive_taxi(current_taxi: Taxi | SilverServiceTaxi, taxis: list[Taxi | SilverServiceTaxi]) -> float:
+    distance = int(input("Drive how far? "))
+    Taxi.start_fare(current_taxi)
+    Taxi.drive(current_taxi, distance)
+    if current_taxi == taxis[0]:
+        trip_fare = Taxi.get_fare(current_taxi)
+    else:
+        trip_fare = SilverServiceTaxi.get_fare(current_taxi)
+    print(f"Your {current_taxi.name} trip cost you ${trip_fare:.2f}")
+    return trip_fare
+
+
+def display_taxis(taxis: list[Taxi | SilverServiceTaxi]):
+    for i in range(0, len(taxis)):
+        print(f"{i} - {taxis[i]}")
 
 
 main()
