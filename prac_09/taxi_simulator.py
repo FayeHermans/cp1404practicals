@@ -7,6 +7,7 @@ MENU = ("q)uit, c)hoose taxi, d)rive\n"
 
 
 def main():
+    """Taxi driving program that keeps track of your total bill depending on which taxi you drive depending on distance."""
     taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
     current_taxi = None
     bill = 0
@@ -17,13 +18,13 @@ def main():
             print("Taxis available:")
             display_taxis(taxis)
             taxi_choice = int(input("Choose taxi: "))
-            if taxi_choice > len(taxis):
+            if taxi_choice > len(taxis):    # if user chooses a taxi number not in the list
                 print("Invalid taxi choice")
             else:
                 current_taxi = taxis[taxi_choice]
 
         elif choice == 'd':
-            if current_taxi is None:
+            if current_taxi is None:    # if user tries to drive before choosing taxi
                 print("You need to choose a taxi before you can drive")
             else:
                 trip_fare = drive_taxi(current_taxi, taxis)
@@ -40,9 +41,11 @@ def main():
 
 
 def drive_taxi(current_taxi: Taxi | SilverServiceTaxi, taxis: list[Taxi | SilverServiceTaxi]) -> float:
+    """Use the user choice of taxi and classes to find trip fare."""
     distance = int(input("Drive how far? "))
     Taxi.start_fare(current_taxi)
     Taxi.drive(current_taxi, distance)
+    # decide if taxi is part of silverservice group or not
     if current_taxi == taxis[0]:
         trip_fare = Taxi.get_fare(current_taxi)
     else:
@@ -52,6 +55,7 @@ def drive_taxi(current_taxi: Taxi | SilverServiceTaxi, taxis: list[Taxi | Silver
 
 
 def display_taxis(taxis: list[Taxi | SilverServiceTaxi]):
+    """Displays the taxis with index so user can choose one."""
     for i in range(0, len(taxis)):
         print(f"{i} - {taxis[i]}")
 
