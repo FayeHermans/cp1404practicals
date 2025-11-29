@@ -40,13 +40,14 @@ def run_tests():
     car = Car()
     assert car._odometer == 0, "Car does not set odometer correctly"
 
-    # TODO: 2. write assert statements to show if Car sets the fuel correctly
     # Note that Car's __init__ function sets the fuel in one of two ways:
     # using the value passed in or the default
     # You should test both of these
     car = Car(fuel=10)
     assert car.fuel != 0
     assert car.fuel != ""
+
+    # testing write sentence function
 
 
 run_tests()
@@ -56,7 +57,6 @@ doctest.testmod()
 
 # (Don't change the tests, change the function!)
 
-# TODO: 5. Write and test a function to format a phrase as a sentence,
 # starting with a capital and ending with a single full stop.
 # Important: start with a function header and just use pass as the body
 # then add doctests for 3 tests:
@@ -65,3 +65,15 @@ doctest.testmod()
 # and one more that you decide is a useful test.
 # Run your doctests and watch the tests fail.
 # Then write the body of the function so that the tests pass.
+def write_sentence(phrase):
+    """Format a phrase as a sentence.
+    >>> write_sentence("hello")
+    'Hello.'
+    >>> write_sentence("It is an ex parrot.")
+    'It is an ex parrot.'
+    >>> write_sentence("test if this works.")
+    'Test if this works.'"""
+    text = phrase[0].upper() + phrase[1:]
+    if text[-1] not in ".?!":
+        text += "."
+    return text
